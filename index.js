@@ -3,8 +3,6 @@ const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
 
-const Person = require("./models/Person");
-
 // forma de ler JSON / middlewares
 app.use(
   express.urlencoded({
@@ -13,6 +11,12 @@ app.use(
 );
 
 app.use(express.json());
+
+// rotas da API
+
+const personRoutes = require("./routes/personRoutes");
+
+app.use(personRoutes);
 
 // rota inical / endpoint
 app.get("/", (req, res) => {
